@@ -1,0 +1,17 @@
+# Example `wrangler.toml` for SwankyBoyz Cloudflare Worker (newsletter/contact)
+name = "swankyboyz-worker"
+main = "workers/newsletter/index.js"
+
+type = "javascript"
+
+[env.production]
+account_id = "YOUR_CF_ACCOUNT_ID"
+route = "swankyboyz.com/*"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "your-d1-database-name"
+
+[vars]
+AMAZON_ASSOCIATE_TAG = "your-affiliate-tag"
+CONTACT_EMAIL = "you@example.com"

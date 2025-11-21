@@ -1,0 +1,37 @@
+---
+title: SwankyBoyz
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwankyBoyz — Men's Lifestyle</title>
+  </head>
+  <body style="font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:#111;color:#eee;">
+    <header style="padding:20px;border-bottom:1px solid #222;">
+      <h1 style="margin:0;color:#ffd700">SwankyBoyz</h1>
+      <p style="margin:4px 0 0 0;color:#bbb">Premium picks, real reviews</p>
+    </header>
+
+    <main style="padding:16px;max-width:900px;margin:0 auto;">
+      <section>
+        <h2 style="color:#fff">Latest Articles</h2>
+        <div id="articles"></div>
+      </section>
+    </main>
+
+    <script>
+      // Load local content files (static demo)
+      async function load() {
+        try {
+          const res = await fetch('/content/index.json').catch(()=>null);
+          if (!res) return;
+          const list = await res.json();
+          const out = document.getElementById('articles');
+          out.innerHTML = list.map(a => `<article style="background:#0f0f0f;padding:12px;margin:12px 0;border-radius:8px;"><h3 style=\"margin:0;color:#ffd700\">${a.title}</h3><p style=\"color:#ccc\">${a.excerpt}</p><a href=\"/articles/${a.slug}.html\" style=\"color:#fff;background:#ffd700;padding:8px;border-radius:6px;text-decoration:none;\">Read</a></article>`).join('');
+        } catch(e){console.warn(e)}
+      }
+      load();
+    </script>
+  </body>
+</html>

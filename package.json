@@ -1,0 +1,28 @@
+{
+  "name": "trifecta",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "setup": "node scripts/setup-instructions.js",
+    "dev:swanky": "npm --prefix apps/swankyboyz run dev",
+    "dev:tours": "npm --prefix apps/vaughnsterlingtours run dev",
+    "dev:brand": "npm --prefix apps/vaughnsterling run dev",
+    "generate": "node scripts/generate.js",
+    "seed": "node scripts/seed.js",
+    "db:migrate": "node scripts/db_migrate.js",
+    "build:all": "echo 'Build each app: npm --prefix apps/<app> run build'",
+    "build:index:swanky": "node scripts/build_index.js swankyboyz",
+    "sitemap:swanky": "node scripts/generate_sitemap.js swankyboyz https://swankyboyz.com",
+    "build:articles:swanky": "node scripts/generate_articles.js",
+    "deploy": "echo 'See README.md for Cloudflare Pages deploy steps; run per-app deploy from Cloudflare Pages UI or use wrangler for functions'"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "axios": "^1.4.0",
+    "openai": "^4.12.0",
+    "marked": "^11.1.0",
+    "sharp": "^0.32.6"
+  }
+}
