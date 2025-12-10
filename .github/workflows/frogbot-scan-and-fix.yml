@@ -12,14 +12,7 @@ permissions:
   contents: read
   id-token: write
   
-name: "Frogbot Scan and Fix"
-on:
-  push:
-    branches: [ "main" ]
-permissions:
-  contents: write
-  pull-requests: write
-  security-events: write
+
 jobs:
   create-fix-pull-requests:
     runs-on: ubuntu-latest
