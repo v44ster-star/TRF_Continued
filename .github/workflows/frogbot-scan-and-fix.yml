@@ -8,7 +8,10 @@
 # Read more about Frogbot here - https://docs.jfrog-applications.jfrog.io/jfrog-applications/frogbot
 
 # Some projects require creating a frogbot-config.yml file. Read more about it here - https://docs.jfrog-applications.jfrog.io/jfrog-applications/frogbot/setup-frogbot/frogbot-configuration
-
+permissions:
+  contents: read
+  id-token: write
+  
 name: "Frogbot Scan and Fix"
 on:
   push:
@@ -63,3 +66,8 @@ jobs:
           # dependencies from a virtual repository in Artifactory, set the name of of the repository. There's no
           # need to set this value, if it is set in the frogbot-config.yml file.
           # JF_DEPS_REPO: ""
+
+          - name: JFrog Fly - Configure all your package managers to work with Fly registry
+  uses: jfrog/fly-action@v1
+  with:
+    url: https://vstvip.jfrog.io
