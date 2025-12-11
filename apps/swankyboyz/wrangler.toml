@@ -1,0 +1,11 @@
+name = "swankyboyz-worker"
+main = "../../workers/newsletter/index.js"
+compatibility_date = "2025-12-11"
+account_id = "YOUR_ACCOUNT_ID"
+workers_dev = true
+
+[vars]
+SITE_NAME = "SwankyBoyz"
+
+[d1_databases]
+main = { binding = "DB", database_name = "trf_db", database_id = "YOUR_D1_DATABASE_ID" }

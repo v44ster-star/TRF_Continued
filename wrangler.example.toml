@@ -1,0 +1,18 @@
+name = "trf-continued-worker"
+main = "workers/newsletter/index.js"
+compatibility_date = "2025-12-11"
+account_id = "YOUR_ACCOUNT_ID"
+workers_dev = true
+
+# Uncomment and set the below for production routes
+#route = ""
+#zone_id = ""
+
+[vars]
+SITE_NAME = "TRF Continued"
+
+[triggers]
+crons = [ "0 0 * * *" ]
+
+[d1_databases]
+main = { binding = "DB", database_name = "trf_db", database_id = "YOUR_D1_DATABASE_ID" }
