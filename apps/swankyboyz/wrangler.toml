@@ -1,0 +1,20 @@
+
+# App-specific worker config. CI publishes using the `deploy-worker` workflow and
+# requires `CF_API_TOKEN` and `CF_ACCOUNT_ID` secrets. Set `CF_D1_DATABASE_ID`
+# if you prefer to inject D1 database IDs via secrets instead of committing them.
+name = "swankyboyz-worker"
+main = "../../workers/newsletter/index.js"
+compatibility_date = "2025-12-11"
+workers_dev = true
+
+## Optional locally-set account id
+# account_id = "YOUR_ACCOUNT_ID"
+
+[vars]
+SITE_NAME = "SwankyBoyz"
+
+[d1_databases]
+main = { binding = "DB", database_name = "trf_db", database_id = "YOUR_D1_DATABASE_ID" }
+
+[env.production]
+database_id = "YOUR_D1_DATABASE_ID"

@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "generate:index": "node ../../scripts/generate_index.js",
+    "generate:sitemap": "BASE_URL=${BASE_URL:-https://example.com} node ../../scripts/generate_sitemap_simple.js",
+    "prebuild": "npm run generate:index && npm run generate:sitemap"
   },
   "dependencies": {
     "astro": "^3.5.0",

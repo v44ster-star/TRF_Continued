@@ -1,0 +1,35 @@
+name: Deploy to Cloudflare Pages (example)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'apps/swankyboyz/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies for site
+        run: |
+          npm --prefix apps/swankyboyz ci
+
+      - name: Build site
+        run: |
+          npm --prefix apps/swankyboyz run build
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CF_PAGES_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          projectName: swankyboyz
+          directory: apps/swankyboyz/dist
