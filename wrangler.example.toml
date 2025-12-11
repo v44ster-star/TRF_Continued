@@ -1,12 +1,13 @@
+
+# Example worker config. Replace placeholder values with your Cloudflare IDs or
+# provide them via GitHub Actions secrets and the publish workflow.
 name = "trf-continued-worker"
 main = "workers/newsletter/index.js"
 compatibility_date = "2025-12-11"
-account_id = "YOUR_ACCOUNT_ID"
 workers_dev = true
 
-# Uncomment and set the below for production routes
-#route = ""
-#zone_id = ""
+## For local testing you can set `account_id` here. In CI we pass it via flags.
+# account_id = "YOUR_ACCOUNT_ID"
 
 [vars]
 SITE_NAME = "TRF Continued"
@@ -16,3 +17,9 @@ crons = [ "0 0 * * *" ]
 
 [d1_databases]
 main = { binding = "DB", database_name = "trf_db", database_id = "YOUR_D1_DATABASE_ID" }
+
+[env.production]
+# Example production overrides. Keep `database_id` blank and set
+# `CF_D1_DATABASE_ID` as a GitHub secret used by CI if you prefer secrets over
+# committing IDs into the repo.
+database_id = "YOUR_D1_DATABASE_ID"
